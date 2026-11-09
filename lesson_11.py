@@ -1,8 +1,13 @@
 import requests
 
-name = input("Введите имя пользователя GitHub: ")
+name = input("Введите имя пользователя GitHub: ").strip()
 url = "https://api.github.com/users/" + name
 response = requests.get(url)
+try:
+    response = requests.get (url,timeout=10)
+except requests.exceptions.RequestException:
+    print("Нет соединения с интернетом")
+    exit()
 
 if response.status_code == 200:
     data = response.json()
