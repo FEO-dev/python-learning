@@ -2,7 +2,7 @@ import requests
 
 name = input("Введите имя пользователя GitHub: ").strip()
 url = "https://api.github.com/users/" + name
-response = requests.get(url)
+
 try:
     response = requests.get (url,timeout=10)
 except requests.exceptions.RequestException:
